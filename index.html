@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Haven Bookstore</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  
+   <header class="site-header">
+
+    <div class="header-logo">
+        <a href="index.html">
+            <img src="images/logo.png" alt="Book Haven Logo" class="logo">
+        </a>
+    </div>
+
+    <button class="hamburger" id="hamburger">
+        ☰
+    </button>
+
+    <nav class="header-nav" id="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="shop.html">Shop</a>
+    </nav>
+
+</header>
+
+    <main>
+      <h1 class="title">Book Haven Bookstore</h1>
+        <div class="home-section">
+          <img src="images/Client3_Notebook.png" alt="Book haven bookstore notebook">
+          <div class="home-text">
+          <p>
+            Book Haven is a cozy independent bookstore focused on community,
+            comfort, and curated reading experiences. We believe bookstores
+            should feel welcoming and inspiring,a place where readers can
+            slow down, discover new stories, and connect with others who share
+            a love for books. From bestselling novels and timeless classics to
+            hidden gems from local authors, our shelves are carefully selected
+            to offer something meaningful for every reader who walks through
+            our doors.
+        </p>
+         <a href="shop.html" class="shop-button">Shop Now</a>
+        </div>
+      </div>
+      <hr>
+       <h1 class="title">Top Picks</h1>
+        
+     <div class="top-picks">
+
+    <div class="book-card">
+        <img src="images/Client3_Book1.png" alt="Book Cover">
+
+        <h2>The Silent Library</h2>
+
+        <p>
+            A mystery novel filled with hidden secrets, forgotten
+            archives, and late-night discoveries.
+        </p>
+    </div>
+
+    <div class="book-card">
+        <img src="images/Client3_Book2.png" alt="Book Cover">
+
+        <h2>Winds of Autumn</h2>
+
+        <p>
+            A heartfelt story about family, change, and finding
+            comfort in unexpected places.
+        </p>
+    </div>
+
+    <div class="book-card">
+        <img src="images/Client3_Book3.png" alt="Book Cover">
+
+        <h2>Beyond the Stars</h2>
+
+        <p>
+            An exciting science fiction adventure exploring distant
+            galaxies and human ambition.
+        </p>
+    </div>
+
+</div>
+    </main>
+
+    <footer class="site-footer">
+
+    <div class="footer-logo">
+        <img src="images/logo.png" alt="Book Haven Footer Logo" class="logo">
+    </div>
+
+    <div class="footer-links">
+
+        <a href="#" onclick="toggleContactForm()">Contact Us</a>
+
+        <a href="#">Instagram</a>
+
+        <a href="#">Twitter</a>
+
+        <a href="mailto:contact@bookhaven.com">Email</a>
+
+         <a href="#" onclick="subscribe()">Subscribe</a>
+
+    </div>
+
+    <div id="contact-form" class="contact-form">
+
+        <h3>Contact Us</h3>
+
+       <form id="contact-us-form">
+
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name"><br><br>
+
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email"><br><br>
+
+            <label for="feedback">Feedback:</label><br>
+            <textarea id="feedback" name="feedback"></textarea><br><br>
+
+            <label for="custom-order">Custom Order Request:</label><br>
+            <textarea id="custom-order" name="custom-order"></textarea><br><br>
+
+            <input type="submit" value="Submit">
+
+        </form>
+
+    </div>
+
+</footer>
+    
+    <script>
+    const hamburger = document.getElementById("hamburger");
+    const navMenu = document.getElementById("nav-menu");
+
+    hamburger.addEventListener("click", () => {
+        navMenu.classList.toggle("active");
+    });
+
+     function toggleContactForm() {
+
+    const form = document.getElementById("contact-form");
+
+    if (form.style.display === "block") {
+        form.style.display = "none";
+    } else {
+        form.style.display = "block";
+    }
+  }
+
+     function subscribe() { 
+        alert("Thank you for subscribing.");
+     }
+
+     const cartClearButtons = document.querySelectorAll(".clear-cart-button");
+
+    cartClearButtons.forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            alert("Cart cleared.");
+
+        });
+
+    });
+
+    const processOrderButtons = document.querySelectorAll(".process-order-button");
+
+    processOrderButtons.forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            alert("Thank you for your order.");
+
+        });
+
+    });
+    
+contactForm.addEventListener("submit", saveFormData);
+
+function saveFormData(event) {
+
+    event.preventDefault();
+
+    const customerData = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        feedback: document.getElementById("feedback").value,
+        customOrder: document.getElementById("custom-order").value
+    };
+
+    localStorage.setItem(
+        "customerData",
+        JSON.stringify(customerData)
+    );
+
+    alert("Customer information saved.");
+}
+</script>
+
+</body>
+</html>
