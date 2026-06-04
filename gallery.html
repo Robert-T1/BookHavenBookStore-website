@@ -137,7 +137,7 @@
 
         <a href="mailto:contact@bookhaven.com">Email</a>
 
-         <a href="#" onclick="subscribe()">Subscribe</a>
+         <a href="#" onclick="toggleSubscribeForm()">Subscribe</a>
 
     </div>
 
@@ -159,11 +159,31 @@
             <label for="custom-order">Custom Order Request:</label><br>
             <textarea id="custom-order" name="custom-order"></textarea><br><br>
 
-            <input type="submit" value="Submit">
+            <input type="submit" value="Submit" required>
 
         </form>
 
     </div>
+    <div id="subscribe-form" class="contact-form">
+
+    <h3>Subscribe</h3>
+
+    <form id="subscribe-email-form">
+
+        <label for="subscribe-email">Email:</label><br>
+
+        <input 
+            type="email" 
+            id="subscribe-email" 
+            name="subscribe-email" 
+            required
+        ><br><br>
+
+        <input type="submit" value="Submit">
+
+    </form>
+
+</div>
 
 </footer>
 
@@ -210,9 +230,38 @@
         form.style.display = "block";
     }
      }
-     function subscribe() { 
-        alert("Thank you for subscribing.");
-     }
+     function toggleSubscribeForm() {
+
+    const form = document.getElementById("subscribe-form");
+
+    if (form.style.display === "block") {
+        form.style.display = "none";
+    } 
+    
+    else {
+        form.style.display = "block";
+    }
+}
+
+const subscribeForm = document.getElementById("subscribe-email-form");
+
+subscribeForm.addEventListener("submit", saveSubscriberEmail);
+
+function saveSubscriberEmail(event) {
+
+    event.preventDefault();
+
+    const email = document.getElementById("subscribe-email").value;
+
+    localStorage.setItem(
+        "subscriberEmail",
+        email
+    );
+
+    alert("Thank you for subscribing.");
+
+    subscribeForm.reset();
+}
 
     const cartClearButtons = document.querySelectorAll(".clear-cart-button");
 
@@ -294,6 +343,8 @@ function saveFormData(event) {
 
     alert("Customer information saved.");
 }
+
+
 </script>
 
 </body>
